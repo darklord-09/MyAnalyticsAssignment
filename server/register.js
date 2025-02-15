@@ -49,7 +49,7 @@ export async function register(username, password){
             return {
                 status : 404,
                 success : false,
-                message : "DBerror",
+                message : err,
             };
         }
             
