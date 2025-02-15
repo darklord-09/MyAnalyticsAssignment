@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 const app= express();
 
 dotenv.config()
-app.use(cors({origin : 'https://interviewerfrontend.vercel.app'}))
+app.use(cors({origin :  'https://interviewerfrontend.vercel.app' }))
 app.use(express.json());
 app.get('/',(req,res)=>{
     res.send("HELLO");
