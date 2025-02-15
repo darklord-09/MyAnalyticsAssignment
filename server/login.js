@@ -9,7 +9,7 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 
-export async function connectToDatabase() {
+async function connectToDatabase() {
   try {
     await client.connect();
     console.log("Connected to MongoDB");
