@@ -100,7 +100,10 @@ async function deleter(id){
                 };
             });
             console.log(dataToSend)
-            return dataToSend;
+            return {
+              status:202,
+            
+            message : dataToSend};
         
        
        }catch(err){
