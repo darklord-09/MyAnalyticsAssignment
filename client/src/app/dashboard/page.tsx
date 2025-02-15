@@ -373,7 +373,7 @@ fetcher()
                   {editingCandidate?._id === candidate._id ? (
                     <select
                       value={updatedData.status !== undefined ? (updatedData.status?1:0) : (candidate.status?1:0)}
-                      onChange={(e) => handleInputChange('status', (e.target.value?true:false))} // Convert to boolean
+                      onChange={(e) => handleInputChange('status', (e.target.value))} // Convert to boolean
                     >
                       <option value={1}>Pending</option>
                       <option value={0}>Done</option>
