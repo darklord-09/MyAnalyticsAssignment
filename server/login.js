@@ -2,7 +2,7 @@ import {User} from './models/userModel.js';
 import bcrypt from 'bcryptjs';
 const { MongoClient } = require('mongodb');
 
-const uri = process.env.DATABASE_URL; // Get the connection string from the environment variable
+const uri = process.env.MONGODB_URI; // Get the connection string from the environment variable
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
