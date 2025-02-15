@@ -1,15 +1,30 @@
-import {Data} from './models/dataModel.js';
+
+const { MongoClient } = require('mongodb');
+
+const uri = process.env.MONGODB_URI; // Get the connection string from the environment variable
+
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB");
+    return client.db(); // Return the database object
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+    throw error; // Re-throw the error to handle it appropriately
+  }
+}
 
 async function schedule(username, candidate, interviewDate,interviewTime,status){
-   const newData=new Data();
-   newData.username=username;
-   newData.candidate=candidate;
-   newData.interviewDate=interviewDate;
-   newData.interviewTime=interviewTime;
-   newData.status=status;
+    const db = await connectToDatabase();
+    const collection = db.collection('data');
 
    try{
-    await newData.save();
+    await collection.insertOne({username: username,candidate : candidate,interviewDate :interviewDate,interviewTime:interviewTime,status:status})
     return {
         status : 202,
       success : true,
@@ -28,10 +43,20 @@ async function schedule(username, candidate, interviewDate,interviewTime,status)
 async function deleter(id){
     
     try{
-     const result=await Data.findByIdAndDelete(id);
-     return result;
+        const db = await connectToDatabase();
+        const collection = db.collection('data');  
+     const result=await collection.findByIdAndDelete(id);
+     return {
+        status : 202,
+      success : true,
+      message : "Entry deleted successfully",
+  };
     }catch(err){
-     return err;
+        return {
+            status: 404,
+            success : false,
+            message : err,
+        };
     }
  
  }
@@ -40,8 +65,9 @@ async function deleter(id){
  async function updater(id, body){
    
     try{
-        
-     await Data.findByIdAndUpdate(id, {$set:{candidate:body.candidate,interviewDate:body.interviewDate,interviewTime:body.interviewTime,status:body.status}});
+        const db = await connectToDatabase();
+        const collection = db.collection('data');   
+     await collection.findByIdAndUpdate(id, {$set:{candidate:body.candidate,interviewDate:body.interviewDate,interviewTime:body.interviewTime,status:body.status}});
      return {
        success : true,
        message : "Entry data updated successfully",
@@ -59,7 +85,9 @@ async function deleter(id){
 
  async function loader(username){
     try{
-        const userData=await Data.find({username : username});
+        const db = await connectToDatabase();
+        const collection = db.collection('data'); 
+        const userData= collection.find({username : username});
         return {
            status : 202, 
           success : true,
