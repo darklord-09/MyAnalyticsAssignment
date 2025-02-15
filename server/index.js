@@ -8,7 +8,19 @@ import dotenv from 'dotenv';
 const app= express();
 
 dotenv.config()
-app.use(cors({origin :  'https://interviewerfrontend.vercel.app' }))
+const allowedOrigins = [
+    'https://interviewerfrontend.vercel.app',  'http://localhost:3001'  
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) { // Allow requests with no origin (like Postman) or from allowed origins
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 app.use(express.json());
 app.get('/',(req,res)=>{
     res.send("HELLO");
