@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Production
+.env.production
+.env.local
+
+# Logs
+*.log
+next-debug.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional: IDE and editor specific files
+.idea
+.vscode
+*.swp
