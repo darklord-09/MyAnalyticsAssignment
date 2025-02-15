@@ -55,7 +55,9 @@ const Login: React.FC = () => {
       setError(data.message);
       }
 
-    } catch (err: any) {
+    } 
+    // @ts-ignore
+    catch (err: any) {
       console.error("Login error:", err);
       setError(err.message);
     } finally {

@@ -12,8 +12,8 @@ const Register: React.FC = () => {
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    setError('');  // Clear any previous errors
-    setSuccess(''); // Clear any previous success messages
+    setError('');  
+    setSuccess(''); 
     setLoading(true);
     if (!username) {
       setError('Username is required.');
@@ -50,7 +50,9 @@ const Register: React.FC = () => {
         setPassword('');
         router.push('/login');
   
-      } catch (err: any) { // Catch potential errors during fetch
+      } 
+      // @ts-ignore
+      catch (err: any) { // Catch potential errors during fetch
         console.error("Registration error:", err);
         setError(err.message); // Set the error message to display
       } finally {

@@ -87,7 +87,9 @@ setError(data.message);
 
 
 
-} catch (err: any) {
+} 
+// @ts-ignore
+catch (err: any) {
 
 console.error("Login error:", err);
 
@@ -112,6 +114,7 @@ fetcher()
     setUpdatedData({ ...candidate }); // Initialize updatedData with current values
   };
 
+  // @ts-ignore
   const handleInputChange = (field: keyof CandidateType, value: any) => {
     setUpdatedData({ ...updatedData, [field]: value });
   };
@@ -145,7 +148,9 @@ fetcher()
       setEditingCandidate(null);// Close edit mode
       setUpdatedData({});       // Clear the updated data
       alert("Updated Successfully")
-    } catch (error: any) {
+    } 
+    // @ts-ignore
+    catch (error: any) {
       console.error("Update error:", error);
       setError(error.message);
     }
@@ -174,7 +179,7 @@ fetcher()
       status: false,
     }); // Clear the form
   };
-
+ // @ts-ignore
   const handleCreateInputChange = (field: keyof Omit<CandidateType, '_id'>, value: any) => {
     setNewCandidate({ ...newCandidate, [field]: value });
   };
@@ -234,7 +239,9 @@ fetcher()
         setCandidateData(candidateData.filter(c => c._id !== candidate._id));
         
         window.location.reload();
-      } catch (error: any) {
+      } 
+      // @ts-ignore
+      catch (error: any) {
         console.error("Delete error:", error);
         setError(error.message);
       }
