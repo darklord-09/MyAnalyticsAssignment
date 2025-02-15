@@ -38,7 +38,7 @@ async function deleter(id){
      return {
         status : 404,
          success : false,
-         message : "Db error",
+         message : err,
      };
     }
  
