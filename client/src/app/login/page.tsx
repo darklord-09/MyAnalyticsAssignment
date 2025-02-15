@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter(); 
-  const handleregister= (e: React.FormEvent)=>{
+  const handleregister= ()=>{
       router.push('/register');
   }
   const handleSubmit = async (e: React.FormEvent) => {

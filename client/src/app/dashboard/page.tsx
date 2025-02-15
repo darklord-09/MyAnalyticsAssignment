@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
     interviewTime: string;
     status: boolean; 
   };
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
+  
   const router = useRouter();
   const [candidateData, setCandidateData] = useState<CandidateType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -102,11 +102,9 @@ setLoading(false);
 }
 
 fetcher()
-  }, [refreshTrigger]);
+  }, [router]);
 
-  function handleRefresh() {
-    setRefreshTrigger(refreshTrigger + 1); // Incrementing the state triggers useEffect
-  };
+  
 
 
   const handleEdit = (candidate: CandidateType) => {
@@ -266,7 +264,7 @@ fetcher()
     setFilterStatus(e.target.value);
   };
 
-  const handleLogout=(e: React.FormEvent)=>{
+  const handleLogout=()=>{
     localStorage.removeItem('username');
     router.push('/login');
 
