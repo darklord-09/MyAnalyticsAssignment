@@ -1,5 +1,5 @@
 
-const { MongoClient } = require('mongodb');
+const { MongoClient,ObjectId } = require('mongodb');
 
 const uri = process.env.MONGODB_URI; // Get the connection string from the environment variable
 
@@ -45,7 +45,7 @@ async function deleter(id){
     try{
         const db = await connectToDatabase();
         const collection = db.collection('data');  
-     const result=await collection.findByIdAndDelete(id);
+     const result=await collection.deleteOne({ _id: new ObjectId(id) });
      return {
         status : 202,
       success : true,
@@ -67,7 +67,7 @@ async function deleter(id){
     try{
         const db = await connectToDatabase();
         const collection = db.collection('data');   
-     await collection.findByIdAndUpdate(id, {$set:{candidate:body.candidate,interviewDate:body.interviewDate,interviewTime:body.interviewTime,status:body.status}});
+     await collection.findOneAndUpdate( { _id: new ObjectId(id)}, {$set:{candidate:body.candidate,interviewDate:body.interviewDate,interviewTime:body.interviewTime,status:body.status}});
      return {
        success : true,
        message : "Entry data updated successfully",
