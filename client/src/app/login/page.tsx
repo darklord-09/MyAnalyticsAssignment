@@ -30,7 +30,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/login', { // Replace with your login API endpoint
+      const response = await fetch('https://interviewerserver.vercel.app/login', { // Replace with your login API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

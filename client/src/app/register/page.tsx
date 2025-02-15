@@ -32,7 +32,7 @@ const Register: React.FC = () => {
 
     
     try {
-        const response = await fetch('http://localhost:3000/register', { // Replace with your API endpoint
+        const response = await fetch('https://interviewerserver.vercel.app/register', { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

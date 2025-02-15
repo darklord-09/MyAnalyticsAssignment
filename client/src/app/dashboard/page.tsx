@@ -38,7 +38,7 @@ async function fetcher () {
 
 try {
 
-const response = await fetch('http://localhost:3000/loader', { // Replace with your login API endpoint
+const response = await fetch('https://interviewerserver.vercel.app/loader', { // Replace with your login API endpoint
 
 method: 'POST',
 
@@ -123,7 +123,7 @@ fetcher()
 
     try {
       
-      const response = await fetch(`http://localhost:3000/update`, { 
+      const response = await fetch(`https://interviewerserver.vercel.app/update`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ fetcher()
 
   const handleSaveNewCandidate = async () => {
     try {
-      const response = await fetch('http://localhost:3000/schedule', { // Your create API endpoint
+      const response = await fetch('https://interviewerserver.vercel.app/schedule', { // Your create API endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ fetcher()
   const handleDelete = async (candidate: CandidateType) => {
     if (confirm("Are you sure you want to delete this candidate?")) {
       try {
-        const response = await fetch(`http://localhost:3000/delete`, { 
+        const response = await fetch(`https://interviewerserver.vercel.app/delete`, { 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
