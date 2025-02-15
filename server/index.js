@@ -11,7 +11,7 @@ dotenv.config()
 app.use(cors({origin :  'https://interviewerfrontend.vercel.app' }))
 app.use(express.json());
 app.get('/',(req,res)=>{
-    console.log(dbConnect())
+    
     res.send("HELLO");
 })
 
@@ -61,7 +61,10 @@ app.post('/schedule',(req,res)=>{
 
 app.post('/delete',(req,res)=>{
     if(req.body){
-     deleter(req.body.id).then((result)=>{res.send(result)});
+        
+     deleter(req.body.id).then((result)=>{
+        console.log(result)
+        res.send(result)});
      
     }
     else{
