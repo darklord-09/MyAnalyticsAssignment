@@ -31,7 +31,7 @@ async function deleter(id){
      const result=await Data.findByIdAndDelete(id);
      return result;
     }catch(err){
-     return 'error';
+     return err;
     }
  
  }
