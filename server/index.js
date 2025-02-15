@@ -11,6 +11,7 @@ dotenv.config()
 app.use(cors({origin :  'https://interviewerfrontend.vercel.app' }))
 app.use(express.json());
 app.get('/',(req,res)=>{
+    console.log(dbConnect());
     res.send("HELLO");
 })
 
