@@ -56,7 +56,7 @@ const Login: React.FC = () => {
       }
 
     } 
-    // @ts-ignore
+    // @ts-expect-ignore
     catch (err: any) {
       console.error("Login error:", err);
       setError(err.message);

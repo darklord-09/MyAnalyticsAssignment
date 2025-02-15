@@ -51,7 +51,7 @@ const Register: React.FC = () => {
         router.push('/login');
   
       } 
-      // @ts-ignore
+      // @ts-expect-ignore
       catch (err: any) { // Catch potential errors during fetch
         console.error("Registration error:", err);
         setError(err.message); // Set the error message to display

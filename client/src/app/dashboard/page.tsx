@@ -88,7 +88,7 @@ setError(data.message);
 
 
 } 
-// @ts-ignore
+// @ts-expect-ignore
 catch (err: any) {
 
 console.error("Login error:", err);
@@ -114,7 +114,7 @@ fetcher()
     setUpdatedData({ ...candidate }); // Initialize updatedData with current values
   };
 
-  // @ts-ignore
+  // @ts-expect-ignore
   const handleInputChange = (field: keyof CandidateType, value: any) => {
     setUpdatedData({ ...updatedData, [field]: value });
   };
@@ -149,7 +149,7 @@ fetcher()
       setUpdatedData({});       // Clear the updated data
       alert("Updated Successfully")
     } 
-    // @ts-ignore
+    // @ts-expect-ignore
     catch (error: any) {
       console.error("Update error:", error);
       setError(error.message);
@@ -179,7 +179,7 @@ fetcher()
       status: false,
     }); // Clear the form
   };
- // @ts-ignore
+ // @ts-expect-ignore
   const handleCreateInputChange = (field: keyof Omit<CandidateType, '_id'>, value: any) => {
     setNewCandidate({ ...newCandidate, [field]: value });
   };
@@ -209,7 +209,9 @@ fetcher()
         status: false,
       }); // Clear the form
       alert("Created Successfully")
-    } catch (error: any) {
+    } 
+    //@ts-expect-ignore
+    catch (error: any) {
       console.error("Create error:", error);
       setError(error.message);
     }
@@ -240,7 +242,7 @@ fetcher()
         
         window.location.reload();
       } 
-      // @ts-ignore
+      // @ts-expect-ignore
       catch (error: any) {
         console.error("Delete error:", error);
         setError(error.message);
@@ -497,16 +499,6 @@ const inputStyle = {
   borderRadius: '4px', 
 };
 
-const selectStyle = {
-  backgroundColor: '#333', 
-  color: 'white', 
-  border: '1px solid white', 
-  padding: '8px',
-  margin: '10px 10px 10px 10px'
-, 
- flex : 1,
-  borderRadius: '4px', 
-}
 
 const buttonStyle = {
   backgroundColor: 'black', 
