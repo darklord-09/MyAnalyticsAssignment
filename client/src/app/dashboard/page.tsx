@@ -124,7 +124,10 @@ fetcher()
        value=false;
      }
    }
+
+   console.log(updatedData.status)
     setUpdatedData({ ...updatedData, [field]: value });
+    
   };
 
   const handleUpdate = async () => {
