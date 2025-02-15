@@ -28,18 +28,10 @@ async function schedule(username, candidate, interviewDate,interviewTime,status)
 async function deleter(id){
     
     try{
-     Data.findByIdAndDelete(id).then(()=>{return {
-        status : 202, 
-        success : true,
-        message : "Entry deleted successfully",
-    };})
+     Data.findByIdAndDelete(id).then(()=>{return 'success';})
      
     }catch(err){
-     return {
-        status : 404,
-         success : false,
-         message : err,
-     };
+     return 'error';
     }
  
  }
