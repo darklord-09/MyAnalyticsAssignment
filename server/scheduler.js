@@ -87,7 +87,7 @@ async function deleter(id){
     try{
         const db = await connectToDatabase();
         const collection = db.collection('data'); 
-        const userData=collection.find({username : username})
+        const userData=await collection.find({username : username}).toArray();
         
             const dataToSend = userData.toArray().map(doc => {
                 return {
