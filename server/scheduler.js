@@ -28,8 +28,8 @@ async function schedule(username, candidate, interviewDate,interviewTime,status)
 async function deleter(id){
     
     try{
-     Data.findByIdAndDelete(id).then(()=>{return 'success';})
-     
+     const result=await Data.findByIdAndDelete(id);
+     return result;
     }catch(err){
      return 'error';
     }
