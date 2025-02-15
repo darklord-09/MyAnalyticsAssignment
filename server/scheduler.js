@@ -87,12 +87,9 @@ async function deleter(id){
     try{
         const db = await connectToDatabase();
         const collection = db.collection('data'); 
-        const userData= collection.find({username : username});
-        return {
-           status : 202, 
-          success : true,
-          message : userData,
-      };
+       const userData= collection.find({username : username});
+       console.log(userData);
+       return userData;
        }catch(err){
            console.log(err);
         return {
