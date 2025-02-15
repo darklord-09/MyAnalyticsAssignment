@@ -39,7 +39,7 @@ export async function register(username, password){
 
     else{
         try{
-          await db.collection.insertOne({username : username, password: newPassword});
+          await collection.insertOne({username : username, password: newPassword});
           return {
             status : 202,
             success : true,
