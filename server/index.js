@@ -1,5 +1,5 @@
 import express, { response } from 'express'
-import { dbConnect } from './dbConnect.js'; 
+
 import {login} from './login.js';
 import {register} from './register.js';
 import {schedule, deleter,updater,loader} from './scheduler.js';
@@ -108,5 +108,5 @@ app.post('/loader',(req,res)=>{
 const port =process.env.PORT||3000
 
 app.listen(port,(req,res)=>{console.log("server running")
-    dbConnect()
+    
 });
