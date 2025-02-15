@@ -14,11 +14,11 @@ app.get('/',(req,res)=>{
     res.send("HELLO");
 })
 
-app.post('/login',async(req,res)=>{
+app.post('/login',(req,res)=>{
 
     if(req.body){
-       const result = await login(req.body.username,req.body.password);
-       res.send(result);
+     login(req.body.username,req.body.password).then((result)=>{res.send(result);});
+       
     }
     else{
         res.send( {
@@ -29,11 +29,11 @@ app.post('/login',async(req,res)=>{
     }
 });
 
-app.post('/register',async (req,res)=>{
+app.post('/register',(req,res)=>{
     console.log(req.body);
     if(req.body){
-        const result = await register(req.body.username,req.body.password);
-        res.send(result);
+     register(req.body.username,req.body.password).then((result)=>{ res.send(result);})
+       
     }
     else{
         res.send( {
@@ -44,10 +44,10 @@ app.post('/register',async (req,res)=>{
     }
 });
 
-app.post('/schedule',async(req,res)=>{
+app.post('/schedule',(req,res)=>{
     if(req.body){
-       const result = await schedule(req.body.username,req.body.candidate,req.body.interviewDate,req.body.interviewTime,req.body.status);
-       res.send(result);
+     schedule(req.body.username,req.body.candidate,req.body.interviewDate,req.body.interviewTime,req.body.status).then((result)=>{res.send(result)});
+       
     }
     else{
         res.send( {
@@ -58,10 +58,10 @@ app.post('/schedule',async(req,res)=>{
     }
 })
 
-app.post('/delete',async(req,res)=>{
+app.post('/delete',(req,res)=>{
     if(req.body){
-      const result =  await deleter(req.body.id);
-      res.send(result);
+     deleter(req.body.id).then((result)=>{res.send(result)});
+     
     }
     else{
         res.send({
@@ -72,10 +72,10 @@ app.post('/delete',async(req,res)=>{
     }
 })
 
-app.post('/update',async (req,res)=>{
+app.post('/update', (req,res)=>{
     if(req.body){
-        const result = await updater(req.body.id, req.body.data);
-        res.send(result);
+        updater(req.body.id, req.body.data).then((result)=>{res.send(result)});
+        
     }
     else{
         res.send({
@@ -86,10 +86,10 @@ app.post('/update',async (req,res)=>{
     }
 })
 
-app.post('/loader',async(req,res)=>{
+app.post('/loader',(req,res)=>{
     if(req.body){
-        const result = await loader(req.body.username);
-        res.send(result);
+         loader(req.body.username).then((result)=>{res.send(result)});
+       
     }
     else{
         res.send({
