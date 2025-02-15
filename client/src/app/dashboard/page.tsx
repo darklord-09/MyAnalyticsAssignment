@@ -116,8 +116,14 @@ fetcher()
 
   // @ts-expect-ignore
   const handleInputChange = (field: keyof CandidateType, value: any) => {
-    console.log(field);
-    console.log(value);
+   if(field==='status'){
+     if(value===1){
+      value=true;
+     }
+     else{
+       value=false;
+     }
+   }
     setUpdatedData({ ...updatedData, [field]: value });
   };
 
@@ -375,8 +381,8 @@ fetcher()
                       value={updatedData.status !== undefined ? (updatedData.status?1:0) : (candidate.status?1:0)}
                       onChange={(e) => handleInputChange('status', (e.target.value))} // Convert to boolean
                     >
-                      <option value={1}>Pending</option>
-                      <option value={0}>Done</option>
+                      <option value={0}>Pending</option>
+                      <option value={1}>Done</option>
                     </select>
                   ) : (
                     candidate.status ? "Done" : "Pending"
