@@ -116,6 +116,8 @@ fetcher()
 
   // @ts-expect-ignore
   const handleInputChange = (field: keyof CandidateType, value: any) => {
+    console.log(field);
+    console.log(value);
     setUpdatedData({ ...updatedData, [field]: value });
   };
 
