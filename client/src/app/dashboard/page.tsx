@@ -125,8 +125,8 @@ fetcher()
      }
    }
 
-   console.log(updatedData.status);
-   console.log(field);
+   //console.log(updatedData.status);
+   console.log(field)
    console.log(value);
     setUpdatedData({ ...updatedData, [field]: value });
     
