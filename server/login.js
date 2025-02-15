@@ -51,7 +51,7 @@ export async function login(username, password){
             return {
                 status : 400,
                 success : false,
-                message : "Wrong password or username",
+                message : "username not found",
             };
         
     }
